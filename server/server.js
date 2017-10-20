@@ -9,6 +9,10 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
 
+app.get('/admin', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/index.html'))
+})
+
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'))
 })

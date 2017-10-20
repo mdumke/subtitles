@@ -1,9 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import App from './components/App'
 
-ReactDOM.render(<App />, document.querySelector('.app'))
+const Root = () => (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
+
+ReactDOM.render(<Root />, document.querySelector('.app'))
 
 socket.on('connect', () => {
   console.log('server-connection established')
