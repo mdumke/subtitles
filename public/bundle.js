@@ -21231,31 +21231,57 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     super(props);
 
     this.state = {
-      currentIndex: 0,
+      currentIndex: -1,
       translations: [{
-        id: 1,
         en: 'He has',
         de: 'Der Hase'
       }, {
-        id: 2,
         en: 'She has',
         de: 'Der Skihase'
       }, {
-        id: 3,
         en: 'The wizard of Oz',
         de: 'Das Wiesel aus dem Osten'
       }]
     };
   }
 
+  handleSelection(newIndex) {
+    this.setState({
+      currentIndex: newIndex
+    });
+  }
+
+  handleKeyboardNavigation({ keyCode }) {
+    // up-arrow
+    if (keyCode === 38 && this.state.currentIndex > -1) {
+      this.setState({
+        currentIndex: this.state.currentIndex - 1
+      });
+    }
+
+    // down-arrow
+    if (keyCode === 40 && this.state.currentIndex < this.state.translations.length) {
+      this.setState({
+        currentIndex: this.state.currentIndex + 1
+      });
+    }
+  }
+
   render() {
-    const tableRows = this.state.translations.map(translation => {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__TranslationsTableRow_TranslationsTableRow__["a" /* default */], { key: translation.id, translation: translation });
+    const tableRows = this.state.translations.map((translation, i) => {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__TranslationsTableRow_TranslationsTableRow__["a" /* default */], {
+        onSelect: this.handleSelection.bind(this),
+        key: i,
+        index: i,
+        highlight: i === this.state.currentIndex,
+        translation: translation });
     });
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'table',
-      null,
+      {
+        onKeyDown: key => this.handleKeyboardNavigation(key),
+        tabIndex: '0' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'thead',
         null,
@@ -21298,11 +21324,13 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
 const TranslationsTableRow = props => {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'tr',
-    null,
+    {
+      onClick: () => props.onSelect(props.index),
+      className: props.highlight ? 'highlight' : '' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'td',
       null,
-      props.translation.id
+      props.index + 1
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'td',

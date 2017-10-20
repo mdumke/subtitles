@@ -1,11 +1,13 @@
 import React from 'react'
 
-const TranslationsTableRow = (props) => {
+const TranslationsTableRow = props => {
   return (
-    <tr>
-      <td>{ props.translation.id }</td>
-      <td>{ props.translation.en }</td>
-      <td>{ props.translation.de }</td>
+    <tr
+      onClick={() => props.onSelect(props.index)}
+      className={props.highlight ? 'highlight' : ''}>
+      <td>{props.index + 1}</td>
+      <td>{props.translation.en}</td>
+      <td>{props.translation.de}</td>
     </tr>
   )
 }
