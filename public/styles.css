@@ -9,3 +9,25 @@ tbody {
 .navigation {
   margin-bottom: 10px;
 }
+
+.screen {
+  display: flex;
+  height: 100vh;
+}
+
+.screen__content {
+  margin: auto;
+}
+
+.screen__text {
+  color: wheat;
+}
+.screen__background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  z-index: -1;
+}

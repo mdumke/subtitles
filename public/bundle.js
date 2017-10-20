@@ -32233,15 +32233,24 @@ class AudienceInterface extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     });
 
     this.state = {
-      text: 'Gleich isset soweit'
+      text: 'Einen Augenblick Geduld, bitte.'
     };
   }
 
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
-      this.state.text
+      { className: 'screen' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'screen__content' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h2',
+          { className: 'screen__text' },
+          this.state.text
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'screen__background' })
     );
   }
 }
