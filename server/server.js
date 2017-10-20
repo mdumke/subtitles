@@ -27,7 +27,13 @@ io.on('connection', socket => {
   })
 
   socket.on('position-update', state => {
-    console.log(state)
+    console.log(`position update: ${state.newIndex}`)
+
+    if (state.translations) {
+      socket.broadcast.emit('new-text', {
+        text: state.translations.en
+      })
+    }
   })
 })
 

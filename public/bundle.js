@@ -2398,14 +2398,6 @@ const Root = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Root, null), document.querySelector('.app'));
 
-socket.on('connect', () => {
-  console.log('server-connection established');
-});
-
-socket.on('disconnect', () => {
-  console.log('server-connection broken');
-});
-
 /***/ }),
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -25678,6 +25670,8 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
   constructor(props) {
     super(props);
 
+    this._socket = io();
+
     this.state = {
       currentIndex: -1,
       translations
@@ -25695,7 +25689,7 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
       translations: this.state.translations[newIndex]
     };
 
-    socket.emit('position-update', update);
+    this._socket.emit('position-update', update);
   }
 
   handleKeyboardNavigation({ keyCode }) {
@@ -25821,11 +25815,31 @@ module.exports = [{"en":"Clockwork Orange","de":"Uhrwerk Orange","tu":"Otomatik 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
-const AudienceInterface = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-  'div',
-  null,
-  'Let\'s build a nice presentation screen here'
-);
+class AudienceInterface extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+  constructor(props) {
+    super(props);
+
+    this._socket = io();
+
+    this._socket.on('new-text', ({ text }) => {
+      this.setState({
+        text
+      });
+    });
+
+    this.state = {
+      text: 'Gleich isset soweit'
+    };
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      this.state.text
+    );
+  }
+}
 
 /* harmony default export */ __webpack_exports__["a"] = (AudienceInterface);
 

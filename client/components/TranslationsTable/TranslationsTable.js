@@ -7,6 +7,8 @@ class TranslationsTable extends Component {
   constructor (props) {
     super(props)
 
+    this._socket = io()
+
     this.state = {
       currentIndex: -1,
       translations
@@ -24,7 +26,7 @@ class TranslationsTable extends Component {
       translations: this.state.translations[newIndex]
     }
 
-    socket.emit('position-update', update)
+    this._socket.emit('position-update', update)
   }
 
   handleKeyboardNavigation ({ keyCode }) {
