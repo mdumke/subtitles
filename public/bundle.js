@@ -970,6 +970,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_App__["a" /* default */], null), document.querySelector('.container'));
 
+socket.on('connect', () => {
+  console.log('server-connection established');
+});
+
+socket.on('disconnect', () => {
+  console.log('server-connection broken');
+});
+
 /***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -21245,25 +21253,30 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     };
   }
 
+  // updates the index and informs via the socket
   handleSelection(newIndex) {
     this.setState({
       currentIndex: newIndex
     });
+
+    const update = {
+      newIndex: newIndex,
+      translations: this.state.translations[newIndex]
+    };
+
+    socket.emit('position-update', update);
   }
 
   handleKeyboardNavigation({ keyCode }) {
-    // up-arrow
-    if (keyCode === 38 && this.state.currentIndex > -1) {
-      this.setState({
-        currentIndex: this.state.currentIndex - 1
-      });
+    const upArrowCode = 38;
+    const downArrowCode = 40;
+
+    if (keyCode === upArrowCode && this.state.currentIndex > -1) {
+      this.handleSelection(this.state.currentIndex - 1);
     }
 
-    // down-arrow
-    if (keyCode === 40 && this.state.currentIndex < this.state.translations.length) {
-      this.setState({
-        currentIndex: this.state.currentIndex + 1
-      });
+    if (keyCode === downArrowCode && this.state.currentIndex < this.state.translations.length) {
+      this.handleSelection(this.state.currentIndex + 1);
     }
   }
 

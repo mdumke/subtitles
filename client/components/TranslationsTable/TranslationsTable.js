@@ -25,25 +25,30 @@ class TranslationsTable extends Component {
     }
   }
 
+  // updates the index and informs via the socket
   handleSelection (newIndex) {
     this.setState({
       currentIndex: newIndex
     })
+
+    const update = {
+      newIndex: newIndex,
+      translations: this.state.translations[newIndex]
+    }
+
+    socket.emit('position-update', update)
   }
 
   handleKeyboardNavigation ({ keyCode }) {
-    // up-arrow
-    if (keyCode === 38 && this.state.currentIndex > -1) {
-      this.setState({
-        currentIndex: this.state.currentIndex - 1
-      })
+    const upArrowCode = 38
+    const downArrowCode = 40
+
+    if (keyCode === upArrowCode && this.state.currentIndex > -1) {
+      this.handleSelection(this.state.currentIndex - 1)
     }
 
-    // down-arrow
-    if (keyCode === 40 && this.state.currentIndex < this.state.translations.length) {
-      this.setState({
-        currentIndex: this.state.currentIndex + 1
-      })
+    if (keyCode === downArrowCode && this.state.currentIndex < this.state.translations.length) {
+      this.handleSelection(this.state.currentIndex + 1)
     }
   }
 
