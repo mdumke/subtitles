@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import TranslationsTableRow from '../TranslationsTableRow/TranslationsTableRow'
+const translations = require('../../../public/translations.json')
 
 class TranslationsTable extends Component {
   constructor (props) {
@@ -8,20 +9,7 @@ class TranslationsTable extends Component {
 
     this.state = {
       currentIndex: -1,
-      translations: [
-        {
-          en: 'He has',
-          de: 'Der Hase'
-        },
-        {
-          en: 'She has',
-          de: 'Der Skihase'
-        },
-        {
-          en: 'The wizard of Oz',
-          de: 'Das Wiesel aus dem Osten'
-        }
-      ]
+      translations
     }
   }
 
@@ -70,8 +58,9 @@ class TranslationsTable extends Component {
         <thead>
           <tr>
             <th scope='col'>#</th>
-            <th scope='col'>Kanal 1 (English)</th>
+            <th scope='col'>Kanal 1 (Englisch)</th>
             <th scope='col'>Kanal 2 (Deutsch)</th>
+            <th scope='col'>Kanal 3 (Türkisch)</th>
           </tr>
         </thead>
 

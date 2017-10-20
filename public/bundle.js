@@ -21212,12 +21212,16 @@ const AdminInterface = () => {
     'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'nav',
-      { className: 'navbar navbar-expand-lg navbar-light bg-light' },
+      'div',
+      { className: 'navigation' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'span',
-        { className: 'navbar-brand', href: '#' },
-        'Subtitles / admin'
+        'nav',
+        { className: 'navbar navbar-dark bg-dark' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          { className: 'navbar-brand', href: '#' },
+          'Subtitles / admin'
+        )
       )
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__TranslationsTable_TranslationsTable__["a" /* default */], null)
@@ -21237,6 +21241,7 @@ const AdminInterface = () => {
 
 
 
+const translations = __webpack_require__(36);
 
 class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
@@ -21244,16 +21249,7 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
 
     this.state = {
       currentIndex: -1,
-      translations: [{
-        en: 'He has',
-        de: 'Der Hase'
-      }, {
-        en: 'She has',
-        de: 'Der Skihase'
-      }, {
-        en: 'The wizard of Oz',
-        de: 'Das Wiesel aus dem Osten'
-      }]
+      translations
     };
   }
 
@@ -21314,12 +21310,17 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'th',
             { scope: 'col' },
-            'Kanal 1 (English)'
+            'Kanal 1 (Englisch)'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'th',
             { scope: 'col' },
             'Kanal 2 (Deutsch)'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'th',
+            { scope: 'col' },
+            'Kanal 3 (T\xFCrkisch)'
           )
         )
       ),
@@ -21363,11 +21364,22 @@ const TranslationsTableRow = props => {
       'td',
       null,
       props.translation.de
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'td',
+      null,
+      props.translation.tu
     )
   );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (TranslationsTableRow);
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+module.exports = [{"en":"Clockwork Orange","de":"Uhrwerk Orange","tu":"Otomatik Portakal"},{"en":"","de":"","tu":""},{"en":"There was me.","de":"Das bin ich, Alex.","tu":"Ýŷte ben."},{"en":"That is, Alex and my three droogs.","de":"Und das meine drei Drugs","tu":"Bu, Alex, ve benim 3 adamým."},{"en":"That is, Pete, Georgie and Dim.","de":"Pete, Georgie und Dim.","tu":"Bu, Pete, Georgie ve Dim."},{"en":"And we sat in the Korova Milk Bar","de":"Wir saßen in der Korova-Milchbar","tu":"Korova Süt Barý'nda otururduk"},{"en":"trying to make up our rassoodocks","de":"und zerbrachen uns die Rassudocks darüber","tu":"biraz kafa bulup"},{"en":"what to do with the evening.","de":"was wir mit dem Abend anfangen sollten.","tu":"geceleri yapacaklarýmýza hazýr olmak için"}]
 
 /***/ })
 /******/ ]);

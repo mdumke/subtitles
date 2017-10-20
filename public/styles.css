@@ -5,3 +5,7 @@ table:focus {
 tbody {
   cursor: pointer;
 }
+
+.navigation {
+  margin-bottom: 10px;
+}

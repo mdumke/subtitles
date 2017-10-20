@@ -8,6 +8,7 @@ const TranslationsTableRow = props => {
       <th scope='row'>{props.index + 1}</th>
       <td>{props.translation.en}</td>
       <td>{props.translation.de}</td>
+      <td>{props.translation.tu}</td>
     </tr>
   )
 }
