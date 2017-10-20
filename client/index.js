@@ -1,13 +1,10 @@
-console.log('hello from client/index.js')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const x = {
-  a: 1,
-  b: 2
+const App = () => {
+  return (
+    <div>React is ready</div>
+  )
 }
 
-const y = {
-  ...x,
-  c: 3
-}
-
-console.log(x, y)
+ReactDOM.render(<App />, document.querySelector('.container'))
