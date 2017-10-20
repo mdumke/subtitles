@@ -7,7 +7,9 @@ const port = process.env.PORT || 3000
 
 const app = express()
 const server = http.createServer(app)
-const io = socketIO(server)
+const io = socketIO(server, {
+  serveClient: false
+})
 
 app.get('/admin', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'))

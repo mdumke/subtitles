@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import io from 'socket.io-client'
 
 class AudienceInterface extends Component {
   constructor (props) {

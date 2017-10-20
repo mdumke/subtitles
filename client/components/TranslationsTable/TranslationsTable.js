@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import io from 'socket.io-client'
 
 import TranslationsTableRow from '../TranslationsTableRow/TranslationsTableRow'
 const translations = require('../../../public/translations.json')
@@ -54,9 +55,9 @@ class TranslationsTable extends Component {
 
     return (
       <table
-        className="table table-sm table-bordered"
+        className='table table-sm table-bordered'
         onKeyDown={key => this.handleKeyboardNavigation(key)}
-        tabIndex="0">
+        tabIndex='0'>
         <thead>
           <tr>
             <th scope='col'>#</th>
