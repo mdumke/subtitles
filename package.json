@@ -1,0 +1,24 @@
+{
+  "name": "subtitles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "build": "webpack",
+    "build:watch": "nodemon --exec 'npm run build' --watch 'client'",
+    "start": "node server/server.js",
+    "start:watch": "nodemon --exec 'npm run start' --watch 'server' --watch 'public'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
