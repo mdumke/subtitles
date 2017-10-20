@@ -5,7 +5,9 @@ import TranslationsTable from '../TranslationsTable/TranslationsTable'
 const AdminInterface = () => {
   return (
     <div>
-      <h1>Sutbitle / Admin Interface</h1>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <span className="navbar-brand" href="#">Subtitles / admin</span>
+      </nav>
 
       <TranslationsTable />
     </div>

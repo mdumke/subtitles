@@ -64,13 +64,14 @@ class TranslationsTable extends Component {
 
     return (
       <table
+        className="table table-sm table-bordered"
         onKeyDown={key => this.handleKeyboardNavigation(key)}
         tabIndex="0">
         <thead>
           <tr>
-            <th />
-            <th>Kanal 1 (English)</th>
-            <th>Kanal 2 (Deutsch)</th>
+            <th scope='col'>#</th>
+            <th scope='col'>Kanal 1 (English)</th>
+            <th scope='col'>Kanal 2 (Deutsch)</th>
           </tr>
         </thead>
 

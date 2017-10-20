@@ -15,9 +15,9 @@ For development purposes, it is convenient to work have two terminals open:
 - [x] highlight current row
 - [x] change current row on click
 - [x] change current row on arrow-keys
+- [x] include bootstrap
+- [x] add socket.io to admin
 - [ ] move admin area to /admin
-- [ ] add socket.io
 - [ ] secure admin area with basic auth
 - [ ] build client interface
 - [ ] add different client channels
-- [ ] include bootstrap

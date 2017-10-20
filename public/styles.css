@@ -1,24 +1,7 @@
-h1 {
-  font-size: 1.3rem;
-}
-
-table {
-  border-collapse: collapse;
-}
-
 table:focus {
   outline: none;
 }
 
 tbody {
   cursor: pointer;
-}
-
-th,
-td {
-  padding: 5px;
-}
-
-.highlight {
-  background-color: wheat;
 }

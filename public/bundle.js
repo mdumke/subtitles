@@ -968,7 +968,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_App__["a" /* default */], null), document.querySelector('.container'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_App__["a" /* default */], null), document.querySelector('.app'));
 
 socket.on('connect', () => {
   console.log('server-connection established');
@@ -21212,9 +21212,13 @@ const AdminInterface = () => {
     'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'h1',
-      null,
-      'Sutbitle / Admin Interface'
+      'nav',
+      { className: 'navbar navbar-expand-lg navbar-light bg-light' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'span',
+        { className: 'navbar-brand', href: '#' },
+        'Subtitles / admin'
+      )
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__TranslationsTable_TranslationsTable__["a" /* default */], null)
   );
@@ -21293,6 +21297,7 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'table',
       {
+        className: 'table table-sm table-bordered',
         onKeyDown: key => this.handleKeyboardNavigation(key),
         tabIndex: '0' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -21301,15 +21306,19 @@ class TranslationsTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'tr',
           null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('th', null),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'th',
-            null,
+            { scope: 'col' },
+            '#'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'th',
+            { scope: 'col' },
             'Kanal 1 (English)'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'th',
-            null,
+            { scope: 'col' },
             'Kanal 2 (Deutsch)'
           )
         )
@@ -21339,10 +21348,10 @@ const TranslationsTableRow = props => {
     'tr',
     {
       onClick: () => props.onSelect(props.index),
-      className: props.highlight ? 'highlight' : '' },
+      className: props.highlight ? 'table-info' : '' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'td',
-      null,
+      'th',
+      { scope: 'row' },
       props.index + 1
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
