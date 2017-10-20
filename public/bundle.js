@@ -67,8 +67,20 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-console.log('hello from client/index.js')
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+console.log('hello from client/index.js');
+
+const x = {
+  a: 1,
+  b: 2
+};
+
+const y = _extends({}, x, {
+  c: 3
+});
+
+console.log(x, y);
 
 /***/ })
 /******/ ]);
