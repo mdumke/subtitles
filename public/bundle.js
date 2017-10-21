@@ -28975,11 +28975,18 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 
 
+const Blah = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+  'div',
+  null,
+  'Welcome to the show!'
+);
+
 const App = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
   'div',
   null,
   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/admin', component: __WEBPACK_IMPORTED_MODULE_2__AdminInterface_AdminInterface__["a" /* default */] }),
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_3__AudienceInterface_AudienceInterface__["a" /* default */] })
+  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/lang/:lang', component: __WEBPACK_IMPORTED_MODULE_3__AudienceInterface_AudienceInterface__["a" /* default */] }),
+  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { exact: true, path: '/', component: Blah })
 );
 
 /* harmony default export */ __webpack_exports__["a"] = (App);
@@ -32195,7 +32202,7 @@ const TranslationsTableRow = props => {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'td',
       null,
-      props.translation.tu
+      props.translation.tr
     )
   );
 };
@@ -32206,7 +32213,7 @@ const TranslationsTableRow = props => {
 /* 124 */
 /***/ (function(module, exports) {
 
-module.exports = [{"en":"Clockwork Orange","de":"Uhrwerk Orange","tu":"Otomatik Portakal"},{"en":"","de":"","tu":""},{"en":"There was me.","de":"Das bin ich, Alex.","tu":"Ýŷte ben."},{"en":"That is, Alex and my three droogs.","de":"Und das meine drei Drugs","tu":"Bu, Alex, ve benim 3 adamým."},{"en":"That is, Pete, Georgie and Dim.","de":"Pete, Georgie und Dim.","tu":"Bu, Pete, Georgie ve Dim."},{"en":"And we sat in the Korova Milk Bar","de":"Wir saßen in der Korova-Milchbar","tu":"Korova Süt Barý'nda otururduk"},{"en":"trying to make up our rassoodocks","de":"und zerbrachen uns die Rassudocks darüber","tu":"biraz kafa bulup"},{"en":"what to do with the evening.","de":"was wir mit dem Abend anfangen sollten.","tu":"geceleri yapacaklarýmýza hazýr olmak için"}]
+module.exports = [{"en":"Clockwork Orange","de":"Uhrwerk Orange","tr":"Otomatik Portakal"},{"en":"","de":"","tr":""},{"en":"There was me.","de":"Das bin ich, Alex.","tr":"Ýŷte ben."},{"en":"That is, Alex and my three droogs.","de":"Und das meine drei Drugs","tr":"Bu, Alex, ve benim 3 adamým."},{"en":"That is, Pete, Georgie and Dim.","de":"Pete, Georgie und Dim.","tr":"Bu, Pete, Georgie ve Dim."},{"en":"And we sat in the Korova Milk Bar","de":"Wir saßen in der Korova-Milchbar","tr":"Korova Süt Barý'nda otururduk"},{"en":"trying to make up our rassoodocks","de":"und zerbrachen uns die Rassudocks darüber","tr":"biraz kafa bulup"},{"en":"what to do with the evening.","de":"was wir mit dem Abend anfangen sollten.","tr":"geceleri yapacaklarýmýza hazýr olmak için"}]
 
 /***/ }),
 /* 125 */
@@ -32220,11 +32227,25 @@ module.exports = [{"en":"Clockwork Orange","de":"Uhrwerk Orange","tu":"Otomatik 
 
 
 
+const greetings = {
+  de: 'Einen Augenblick noch...',
+  en: 'Just a moment, please...',
+  tr: 'Bir dakika, lütfen...'
+};
+
 class AudienceInterface extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
 
+    this._lang = props.match.params.lang;
+
     this._socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default()();
+
+    this._socket.on('connect', () => {
+      this._socket.emit('join', {
+        lang: this._lang
+      });
+    });
 
     this._socket.on('new-text', ({ text }) => {
       this.setState({
@@ -32233,7 +32254,7 @@ class AudienceInterface extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     });
 
     this.state = {
-      text: 'Einen Augenblick Geduld, bitte.'
+      text: greetings[this._lang]
     };
   }
 

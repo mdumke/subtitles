@@ -18,5 +18,7 @@ For development purposes, it is convenient to work have two terminals open:
 - [x] add socket.io to admin
 - [x] move admin area to /admin
 - [x] build client interface
+- [x] add different client channels
 - [ ] secure admin area with basic auth
-- [ ] add different client channels
+- [ ] use admin token to allow emitting updates
+- [ ] provide a landing page

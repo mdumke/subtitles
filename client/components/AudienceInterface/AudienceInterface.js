@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
 
+const greetings = {
+  de: 'Einen Augenblick noch...',
+  en: 'Just a moment, please...',
+  tr: 'Bir dakika, lütfen...'
+}
+
 class AudienceInterface extends Component {
   constructor (props) {
     super(props)
 
+    this._lang = props.match.params.lang
+
     this._socket = io()
+
+    this._socket.on('connect', () => {
+      this._socket.emit('join', {
+        lang: this._lang
+      })
+    })
 
     this._socket.on('new-text', ({ text }) => {
       this.setState({
@@ -14,7 +28,7 @@ class AudienceInterface extends Component {
     })
 
     this.state = {
-      text: 'Einen Augenblick Geduld, bitte.'
+      text: greetings[this._lang]
     }
   }
 

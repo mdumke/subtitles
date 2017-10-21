@@ -11,11 +11,10 @@ const io = socketIO(server, {
   serveClient: false
 })
 
-app.get('/admin', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/index.html'))
-})
+const supportedLangs = ['en', 'de', 'tr']
+const validPaths = supportedLangs.map(l => `/lang/${l}`)
 
-app.get('/', (req, res) => {
+app.get(['/', '/admin'].concat(validPaths), (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'))
 })
 
@@ -32,10 +31,20 @@ io.on('connection', socket => {
     console.log(`position update: ${state.newIndex}`)
 
     if (state.translations) {
-      socket.broadcast.emit('new-text', {
-        text: state.translations.en
+      // emit text for each language
+      Object.keys(state.translations).forEach(key => {
+        if (supportedLangs.indexOf(key) === -1) return
+
+        io.to(key).emit('new-text', {
+          text: state.translations[key]
+        })
       })
     }
+  })
+
+  socket.on('join', info => {
+    console.log(`client joining channel ${info.lang}`)
+    socket.join(info.lang)
   })
 })
 
