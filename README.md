@@ -19,6 +19,7 @@ For development purposes, it is convenient to work have two terminals open:
 - [x] move admin area to /admin
 - [x] build client interface
 - [x] add different client channels
+- [x] provide a landing page
 - [ ] secure admin area with basic auth
 - [ ] use admin token to allow emitting updates
-- [ ] provide a landing page
+- [ ] switch to yaml for tranlsations

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import io from 'socket.io-client'
 
 const greetings = {
-  de: 'Einen Augenblick noch...',
+  de: 'Einen Augenblick bitte...',
   en: 'Just a moment, please...',
   tr: 'Bir dakika, lütfen...'
 }

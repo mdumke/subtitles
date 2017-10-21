@@ -15,6 +15,18 @@ tbody {
   height: 100vh;
 }
 
+.screen__title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 1.6rem;
+  color: wheat;
+}
+
+.screen__subtitle {
+  color: tomato;
+}
+
 .screen__content {
   margin: auto;
 }
@@ -22,6 +34,15 @@ tbody {
 .screen__text {
   color: wheat;
 }
+
+.screen__link {
+  color: wheat;
+}
+
+.screen__link:hover {
+  color: tomato;
+}
+
 .screen__background {
   position: fixed;
   top: 0;
